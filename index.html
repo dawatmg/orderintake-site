@@ -107,24 +107,28 @@ bill to central accounts as always</pre>
       <div class="band">
         <div class="band-grid">
           <div class="stat">
-            <div class="n">40–70%</div>
-            <p class="l">of purchase orders arrive as documents — email, PDF, Excel, scanned fax — not as structured data. <span class="tag tag-hyp">Hypothesis</span></p>
+            <div class="n">11 min</div>
+            <p class="l">median time a clerk spends keying one order by hand — Conexiom's own benchmark puts it near 12. <span class="tag tag-src">Sourced</span></p>
+            <a class="src" href="https://ordersync.io/blog/manual-order-entry-statistics" target="_blank" rel="noopener">ordersync.io · Esker benchmark</a>
           </div>
           <div class="stat">
-            <div class="n">6–12 min</div>
-            <p class="l">a clerk spends re-keying a single order by hand. <span class="tag tag-hyp">Hypothesis</span></p>
+            <div class="n">$5.80</div>
+            <p class="l">direct labour on a single order — 11 minutes at a $0.53/min fully-loaded clerk cost. <span class="tag tag-src">Sourced</span></p>
+            <a class="src" href="https://appseconnect.com/articles/cost-of-manual-order-entry" target="_blank" rel="noopener">appseconnect.com · $31.75/hr loaded</a>
           </div>
           <div class="stat">
-            <div class="n">3–8%</div>
-            <p class="l">manual keying error rate — wrong SKU, wrong quantity, missed line — that cascades into fulfilment delays and billing disputes. <span class="tag tag-hyp">Hypothesis</span></p>
+            <div class="n">0.55–3.6%</div>
+            <p class="l">measured single-pass keystroke error rate; the industry view puts real order errors nearer 9%, against under 1% for automated entry. <span class="tag tag-src">Sourced</span></p>
+            <a class="src" href="https://ordersync.io/blog/manual-order-entry-statistics" target="_blank" rel="noopener">Barchard et al. 2020 · appseconnect.com</a>
           </div>
           <div class="stat">
-            <div class="n">$21.50–28<span style="font-size:.5em">/hr</span></div>
-            <p class="l">what an order-entry or customer-service clerk costs, before overhead. <span class="tag tag-hyp">Hypothesis</span></p>
+            <div class="n">20–40%</div>
+            <p class="l">of a customer-service rep's working hours go to manual order handling instead of customers. <span class="tag tag-src">Sourced</span></p>
+            <a class="src" href="https://appseconnect.com/articles/cost-of-manual-order-entry" target="_blank" rel="noopener">appseconnect.com</a>
           </div>
         </div>
       </div>
-      <p class="note">Figures marked <span class="tag tag-hyp">Hypothesis</span> are working estimates drawn from published order-entry job postings and industry studies. The sourced version — one URL per number — is maintained in <code>market/MARKET.md</code>. We publish no number we cannot show you the source for. See <a href="#method" style="text-decoration:underline;text-underline-offset:3px">how we source numbers</a>.</p>
+      <p class="note">All four figures above are sourced — one URL per number, logged in <code>market/MARKET.md</code>. Two things on this site are working estimates and are labelled rather than dressed up: the share of mid-market purchase orders that arrive as documents rather than clean EDI, and the 3–8% end-to-end order error band. <span class="tag tag-hyp">Hypothesis</span> Everything else is either cited or measured. See <a href="#method" style="text-decoration:underline;text-underline-offset:3px">how we source numbers</a>.</p>
     </div>
   </section>
 
@@ -182,10 +186,11 @@ bill to central accounts as always</pre>
     <div class="wrap">
       <div class="sec-head">
         <p class="kicker">Accuracy, honestly</p>
-        <h2>We don't publish an accuracy number we haven't measured on your documents.</h2>
-        <p class="sub">The pilot runs our engine over 500 of your own historical orders and reports exactly how
-        it did — line by line, with the counts you can re-check. Until that run exists, any accuracy figure
-        would be marketing. So there isn't one on this page.</p>
+        <h2>We publish one measured number — and we tell you exactly what it covers.</h2>
+        <p class="sub">Our engine currently scores <strong>1.0000</strong> on our own gold set: 614 of 614 line items
+        correct across 20 documents. But that gold set is <strong>synthetic</strong>, so it proves the pipeline works end to
+        end — it is not a real-world accuracy claim, and we won't present it as one. Real-world accuracy is what
+        the pilot produces, on 500 of your documents.</p>
       </div>
 
       <div class="bench">
@@ -195,12 +200,12 @@ bill to central accounts as always</pre>
           from your pilot, not from a brochure.</p>
           <div class="rows">
             <div class="row head"><div class="nm">Per order</div><div class="track"></div><div class="vl">Value</div></div>
-            <div class="row"><div class="nm">Manual — minutes of work</div><div class="track"><div class="fill grey" style="width:100%"></div></div><div class="vl">6–12 min</div></div>
+            <div class="row"><div class="nm">Manual — minutes of work</div><div class="track"><div class="fill grey" style="width:100%"></div></div><div class="vl">11 min</div></div>
             <div class="row hi"><div class="nm">Order Intake — minutes of your time</div><div class="track"><div class="fill" style="width:4%"></div></div><div class="vl">measured</div></div>
-            <div class="row"><div class="nm">Manual — error rate</div><div class="track"><div class="fill grey" style="width:62%"></div></div><div class="vl">3–8%</div></div>
-            <div class="row hi"><div class="nm">Order Intake — error rate</div><div class="track"><div class="fill" style="width:6%"></div></div><div class="vl">measured</div></div>
+            <div class="row"><div class="nm">Manual — keystroke error rate</div><div class="track"><div class="fill grey" style="width:34%"></div></div><div class="vl">0.55–3.6%</div></div>
+            <div class="row hi"><div class="nm">Order Intake — line accuracy on gold set</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="vl">1.0000</div></div>
           </div>
-          <p class="note">Manual figures are estimates pending the sourced market file <span class="tag tag-hyp">Hypothesis</span>. Our figures are produced by a measurement run over your documents and stay labelled <span class="tag tag-measured">Measured</span> only once that run prints them.</p>
+          <p class="note">Manual figures are sourced (see the band above). The engine row is the printed result of a measurement run over our own gold set — <span class="tag tag-measured">Measured</span> — with the caveat that the gold set is synthetic. On your documents the same run is repeated and the number becomes yours.</p>
         </div>
 
         <div>
@@ -213,20 +218,30 @@ bill to central accounts as always</pre>
             <div class="kv"><span>Lines sent to human QC</span><span>—</span></div>
             <div class="kv"><span>Ambiguous lines left for you</span><span>—</span></div>
             <div class="kv"><span>Confidence threshold used</span><span>0.85</span></div>
-            <div class="kv"><span>Measured accuracy on the gold set</span><span>—</span></div>
+            <div class="kv"><span>Measured accuracy on the gold set</span><span>1.0000 · synthetic</span></div>
           </div>
           <div class="card" style="margin-top:18px">
             <h3>How the number is produced</h3>
-            <p>We run <code>python3 -m delivery.cli --accuracy delivery/gold</code> locally and write the exact
-            printed figure into your report. The same command is re-run before the number is ever repeated to
-            you. Nothing is uploaded: the engine, the gold set and your documents stay on one encrypted
-            machine. <span class="tag tag-src">ops/DATA-HANDLING.md</span></p>
+            <p>We run one command locally and publish exactly what it prints. This is the real output from our
+            current gold set — nothing rounded up, nothing hand-edited. <span class="tag tag-measured">Measured</span></p>
+            <div class="term">$ python3 -m delivery.cli --accuracy delivery/gold<br>
+<span class="ok">ACCURACY field_level_accuracy=1.0000  matched=614  total=614  documents=20</span></div>
+            <p style="margin-top:14px">Caveat, stated plainly: those 20 documents are synthetic ones we wrote to
+            exercise the pipeline. A clean sweep there means the parser, the mapping and the CSV export all
+            agree on known-answer data — it does not mean 100% on real distributor orders. That claim needs your
+            documents, which is what the pilot is for.</p>
+            <p>Nothing is uploaded to measure this: the engine, the gold set and your documents stay on one
+            encrypted machine. <span class="tag tag-src">ops/DATA-HANDLING.md</span></p>
           </div>
           <div class="card" style="margin-top:18px">
             <h3>Why not the enterprise tools?</h3>
-            <p>Conexiom and Esker solve this well for large enterprises. Both are quote-only with no public rate
-            card, and both expect a template-building deployment before you see a result — a poor fit when you
-            want to know whether the output is right. <span class="tag tag-hyp">Hypothesis</span></p>
+            <p>Conexiom and Esker solve this well at enterprise scale — and neither publishes a price. Conexiom
+            is demo-and-quote with roughly 30-day implementations; Esker's pricing page returns a 404 and its
+            own quoted range runs from $80k to $400k+ a year with implementations billed separately. Both ask
+            you to commit before you can see the output.
+            <span class="tag tag-src">Sourced</span></p>
+            <a class="src" href="https://erpresearch.com/erp-add-ons/distribution/conexiom" target="_blank" rel="noopener">erpresearch.com · Conexiom</a>
+            <a class="src" href="https://vendorbenchmark.com/vendors/esker-pricing" target="_blank" rel="noopener">vendorbenchmark.com · Esker pricing</a>
           </div>
         </div>
       </div>
@@ -472,28 +487,41 @@ bill to central accounts as always</pre>
   <section class="sec" id="method">
     <div class="wrap">
       <div class="method">
-        <h3>How we source numbers — and what is not a number yet</h3>
+        <h3>How we source numbers — and what is not sourced yet</h3>
         <ul>
-          <li><strong>Marketing and baseline figures</strong> (40–70% of POs arriving as documents; 6–12 minutes
-          per order; a 3–8% manual error rate; $21.50–$28/hr for a clerk) are tagged
-          <span class="tag tag-hyp">Hypothesis</span>. They are working estimates drawn from published
-          order-entry job postings and industry studies; the fully sourced version, one URL per figure, lives in
-          <code>market/MARKET.md</code>.</li>
-          <li><strong>Accuracy figures are never estimated.</strong> The engine's accuracy comes only from a run
-          over a gold set of documents (<code>delivery/gold/</code>) via
-          <code>python3 -m delivery.cli --accuracy delivery/gold</code>. Until that run exists for your data, the
-          figure on this site stays blank and is tagged <span class="tag tag-measured">Measured</span> only after
-          it prints.</li>
-          <li><strong>Service terms</strong> (the 500-document pilot scope, the 0.85 confidence threshold,
-          30-day raw-document deletion, 12-month retention, local-only processing) are sourced from our own
-          operations files: <span class="tag tag-src">ops/DATA-HANDLING.md</span>
-          <span class="tag tag-src">ops/PILOT-CHECKLIST.md</span>.</li>
-          <li><strong>Competitor statements</strong> about Conexiom and Esker (quote-only pricing, deployment
-          before results) are observations from their public sites as of publication and are tagged
-          <span class="tag tag-hyp">Hypothesis</span>.</li>
-          <li><strong>Pricing</strong> ($1,500–$4,000/mo for up to 2,000 orders, then $0.35–$0.75/order) is the
-          published offer ladder, not a benchmark against a competitor's rate card.</li>
+          <li><strong>Benchmark figures are cited.</strong> 11 minutes median to key one order by hand; $31.75/hr
+          fully-loaded order-clerk cost ($0.53/min, ≈$5.80 of labour per order); a 0.55–3.6% single-pass
+          keystroke error rate (Barchard et al., 2020) with an industry view nearer 9%; 20–40% of a rep's hours
+          lost to manual order handling. Full list, one URL per number, in <code>market/MARKET.md</code>.
+          <span class="tag tag-src">Sourced</span></li>
+          <li><strong>Two things are estimates, tagged as such.</strong> The share of mid-market purchase orders
+          arriving as documents rather than clean EDI (we model ~60%), and the 3–8% end-to-end order error band
+          quoted in the business case. Both are labelled <span class="tag tag-hyp">Hypothesis</span> on this
+          site rather than presented as measured fact.</li>
+          <li><strong>The accuracy figure is measured, and reproducible.</strong> It comes from
+          <code>python3 -m delivery.cli --accuracy delivery/gold</code>, which currently prints
+          <code>field_level_accuracy=1.0000 matched=614 total=614 documents=20</code>. The gold set is
+          synthetic, so the figure is a pipeline proof; it is published with that caveat, never as a
+          real-world rate. <span class="tag tag-measured">Measured</span></li>
+          <li><strong>Service terms come from our own operations files.</strong> The 500-document pilot scope,
+          the 0.85 default confidence threshold, 30-day raw-document deletion, 12-month retention and
+          local-only processing: <span class="tag tag-src">ops/DATA-HANDLING.md</span>
+          <span class="tag tag-src">ops/PILOT-CHECKLIST.md</span></li>
+          <li><strong>Competitor claims are observations from their public sites.</strong> Conexiom is
+          demo-and-quote with ~30-day implementations; Esker has no pricing page and quotes $80k–$400k+/yr.
+          <span class="tag tag-src">Sourced</span> See <code>market/COMPETITORS.csv</code>.</li>
+          <li><strong>Pricing</strong> ($1,500–$4,000/mo for up to 2,000 orders, then $0.35–$0.75/order) is our
+          published offer ladder — a price we set, not a benchmark against a competitor's rate card.</li>
         </ul>
+        <div class="srclist">
+          <strong style="color:var(--ink-2)">Sources</strong><br>
+          <a href="https://ordersync.io/blog/manual-order-entry-statistics" target="_blank" rel="noopener">ordersync.io/blog/manual-order-entry-statistics</a><br>
+          <a href="https://appseconnect.com/articles/cost-of-manual-order-entry" target="_blank" rel="noopener">appseconnect.com/articles/cost-of-manual-order-entry</a><br>
+          <a href="https://www.bls.gov/ooh/office-and-administrative-support/order-clerks.htm" target="_blank" rel="noopener">bls.gov/ooh/…/order-clerks.htm</a><br>
+          <a href="https://miragemetrics.com/blog/true-cost-manual-order-entry/" target="_blank" rel="noopener">miragemetrics.com/blog/true-cost-manual-order-entry</a><br>
+          <a href="https://erpresearch.com/erp-add-ons/distribution/conexiom" target="_blank" rel="noopener">erpresearch.com/erp-add-ons/distribution/conexiom</a><br>
+          <a href="https://vendorbenchmark.com/vendors/esker-pricing" target="_blank" rel="noopener">vendorbenchmark.com/vendors/esker-pricing</a>
+        </div>
       </div>
     </div>
   </section>
