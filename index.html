@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order Intake — messy purchase orders in, clean ERP-ready sales orders out</title>
+<meta name="description" content="Done-for-you order intake for mid-market distributors and wholesalers. We parse email, PDF, Excel, scanned fax and voicemail purchase orders and return ERP-ready sales orders with a confidence score. Start with a free pilot on your last 500 order documents.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Order Intake — messy purchase orders in, clean ERP-ready orders out">
+<meta property="og:description" content="Free pilot on your last 500 order documents: an accuracy report and the structured output, no integration, no commitment.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Crect x='8' y='8' width='16' height='16' rx='4' fill='%237c8f6b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===================== announcement bar ===================== -->
+<div class="topbar">
+  <div class="wrap">
+    <span><span class="dot">●</span> Free pilot: send us 500 of your past order documents, get back an accuracy report and the ERP-ready output.</span>
+    <a href="#how">How it works ↓</a>
+  </div>
+</div>
+
+<!-- ===================== header ===================== -->
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Order&nbsp;Intake</a>
+    <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#accuracy">Accuracy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#pilot">Contact</a>
+      <a class="btn btn-primary" href="#pilot">Run my free pilot</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===================== hero ===================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="inner">
+        <p class="eyebrow">Done-for-you order intake for distributors &amp; wholesalers</p>
+        <h1 class="display">Messy purchase orders in. Clean, ERP-ready sales orders out.</h1>
+        <p class="lede">Email bodies, PDFs, Excel attachments, scanned faxes and voicemail. We parse them, validate
+        every line against your catalogue and customer pricing, and return orders your ERP imports without
+        re-typing — with a confidence score on every order and a daily reconciliation report.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="#pilot">Run my free pilot →</a>
+        </div>
+        <p class="cta-note">Free pilot on your last 500 order documents. No integration, no commitment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== before / after stage ===================== -->
+  <section class="stage">
+    <div class="wrap">
+      <div class="frame">
+        <div class="mock">
+          <div class="panel">
+            <h4>What arrives</h4>
+            <pre class="raw">From: purchasing@northgate-supply.com
+Subject: PO 10428 - please process
+
+hi, need the following shipped to
+our Raleigh dc, need it friday:
+
+ <span class="hl">14 cs</span> of PUREX 4/1 gal  (sku 11042)
+ <span class="hl">3 pallets</span> jumbo kraft towel
+ 6 x case 12ct nitrile gloves L
+ (see scanned page attached for the rest)
+
+also add <span class="hl">the usual 20% discount</span> and
+bill to central accounts as always</pre>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="panel">
+            <h4>What we return</h4>
+            <table class="tbl">
+              <thead><tr><th>SKU</th><th>Description</th><th>Qty</th></tr></thead>
+              <tbody>
+                <tr><td>11042</td><td>PUREX 4/1 gal</td><td>14 CS</td></tr>
+                <tr><td>22190</td><td>Jumbo kraft towel</td><td>3 PLT</td></tr>
+                <tr><td>33881</td><td>Nitrile gloves L, 12ct</td><td>6 CS</td></tr>
+                <tr><td>11042</td><td>Ship-to: Raleigh DC</td><td>—</td></tr>
+                <tr><td colspan="2">Pricing · discount applied</td><td>20%</td></tr>
+              </tbody>
+            </table>
+            <p class="hint" style="margin-top:12px">Canonical order JSON + ERP CSV · line confidence ≥ 0.85 · 1 line sent to QC</p>
+          </div>
+        </div>
+        <div class="frame-foot">
+          <span class="chip"><span class="dot" aria-hidden="true"></span>Order 10428 · 4 lines · 3 auto-accepted · 1 flagged for human QC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== stat band ===================== -->
+  <section class="sec" style="padding-top:0" id="why">
+    <div class="wrap">
+      <div class="band">
+        <div class="band-grid">
+          <div class="stat">
+            <div class="n">40–70%</div>
+            <p class="l">of purchase orders arrive as documents — email, PDF, Excel, scanned fax — not as structured data. <span class="tag tag-hyp">Hypothesis</span></p>
+          </div>
+          <div class="stat">
+            <div class="n">6–12 min</div>
+            <p class="l">a clerk spends re-keying a single order by hand. <span class="tag tag-hyp">Hypothesis</span></p>
+          </div>
+          <div class="stat">
+            <div class="n">3–8%</div>
+            <p class="l">manual keying error rate — wrong SKU, wrong quantity, missed line — that cascades into fulfilment delays and billing disputes. <span class="tag tag-hyp">Hypothesis</span></p>
+          </div>
+          <div class="stat">
+            <div class="n">$21.50–28<span style="font-size:.5em">/hr</span></div>
+            <p class="l">what an order-entry or customer-service clerk costs, before overhead. <span class="tag tag-hyp">Hypothesis</span></p>
+          </div>
+        </div>
+      </div>
+      <p class="note">Figures marked <span class="tag tag-hyp">Hypothesis</span> are working estimates drawn from published order-entry job postings and industry studies. The sourced version — one URL per number — is maintained in <code>market/MARKET.md</code>. We publish no number we cannot show you the source for. See <a href="#method" style="text-decoration:underline;text-underline-offset:3px">how we source numbers</a>.</p>
+    </div>
+  </section>
+
+  <!-- ===================== how it works ===================== -->
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">How it works</p>
+        <h2>Three steps from your inbox to your ERP.</h2>
+        <p class="sub">No integration to build, no software to install, no change to the ERP you already run.
+        You point us at order documents; we hand back orders your system can import.</p>
+      </div>
+      <div class="grid g3">
+        <article class="card">
+          <div class="num">STEP 01</div>
+          <h3>Point us at your order inbox</h3>
+          <p>Forward a shared mailbox or drop a folder of the last 500 order documents — email bodies, PDFs,
+          spreadsheets, scanned faxes, even voicemail recordings. Nothing is installed and no one logs into
+          your ERP.</p>
+          <ul class="step-list">
+            <li>One shared mailbox or a zipped folder is enough to start</li>
+            <li>We hash the inbox before touching it, so nothing is lost or altered</li>
+            <li>Unsupported files are listed for you, never silently dropped</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">STEP 02</div>
+          <h3>We parse, map and validate</h3>
+          <p>Our engine converts each document into a canonical order, matches every line to your catalogue,
+          customer and pricing, and scores its own confidence. Anything below your threshold is held back and
+          reviewed by a human before it reaches you.</p>
+          <ul class="step-list">
+            <li>Confidence threshold is yours — 0.85 by default</li>
+            <li>Ambiguous lines are flagged for clarification, never guessed</li>
+            <li>We measure our own accuracy on a gold set and show you the run</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">STEP 03</div>
+          <h3>You get ERP-ready orders &amp; a daily reconciliation</h3>
+          <p>Structured order files that import straight into your ERP using its own import template, plus a
+          daily report reconciling what came in, what we returned, and what we were unsure about.</p>
+          <ul class="step-list">
+            <li>CSV/Excel columns matched to your ERP import format</li>
+            <li>Counts reconciled: documents in = orders out, no unexplained gap</li>
+            <li>Low-confidence queue and corrections are visible to you, not hidden</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== accuracy / benchmark ===================== -->
+  <section class="sec" id="accuracy">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Accuracy, honestly</p>
+        <h2>We don't publish an accuracy number we haven't measured on your documents.</h2>
+        <p class="sub">The pilot runs our engine over 500 of your own historical orders and reports exactly how
+        it did — line by line, with the counts you can re-check. Until that run exists, any accuracy figure
+        would be marketing. So there isn't one on this page.</p>
+      </div>
+
+      <div class="bench">
+        <div class="card soft">
+          <h3>Manual re-keying versus us</h3>
+          <p style="margin-bottom:18px">The baseline below is the process you run today. Our column is filled in
+          from your pilot, not from a brochure.</p>
+          <div class="rows">
+            <div class="row head"><div class="nm">Per order</div><div class="track"></div><div class="vl">Value</div></div>
+            <div class="row"><div class="nm">Manual — minutes of work</div><div class="track"><div class="fill grey" style="width:100%"></div></div><div class="vl">6–12 min</div></div>
+            <div class="row hi"><div class="nm">Order Intake — minutes of your time</div><div class="track"><div class="fill" style="width:4%"></div></div><div class="vl">measured</div></div>
+            <div class="row"><div class="nm">Manual — error rate</div><div class="track"><div class="fill grey" style="width:62%"></div></div><div class="vl">3–8%</div></div>
+            <div class="row hi"><div class="nm">Order Intake — error rate</div><div class="track"><div class="fill" style="width:6%"></div></div><div class="vl">measured</div></div>
+          </div>
+          <p class="note">Manual figures are estimates pending the sourced market file <span class="tag tag-hyp">Hypothesis</span>. Our figures are produced by a measurement run over your documents and stay labelled <span class="tag tag-measured">Measured</span> only once that run prints them.</p>
+        </div>
+
+        <div>
+          <div class="measured-box">
+            <h3>What your pilot report contains</h3>
+            <p class="hint" style="margin-bottom:12px">Every value below is a count from your own 500 documents.</p>
+            <div class="kv"><span>Documents processed</span><span>500</span></div>
+            <div class="kv"><span>Line items parsed</span><span>—</span></div>
+            <div class="kv"><span>Lines accepted above threshold</span><span>—</span></div>
+            <div class="kv"><span>Lines sent to human QC</span><span>—</span></div>
+            <div class="kv"><span>Ambiguous lines left for you</span><span>—</span></div>
+            <div class="kv"><span>Confidence threshold used</span><span>0.85</span></div>
+            <div class="kv"><span>Measured accuracy on the gold set</span><span>—</span></div>
+          </div>
+          <div class="card" style="margin-top:18px">
+            <h3>How the number is produced</h3>
+            <p>We run <code>python3 -m delivery.cli --accuracy delivery/gold</code> locally and write the exact
+            printed figure into your report. The same command is re-run before the number is ever repeated to
+            you. Nothing is uploaded: the engine, the gold set and your documents stay on one encrypted
+            machine. <span class="tag tag-src">ops/DATA-HANDLING.md</span></p>
+          </div>
+          <div class="card" style="margin-top:18px">
+            <h3>Why not the enterprise tools?</h3>
+            <p>Conexiom and Esker solve this well for large enterprises. Both are quote-only with no public rate
+            card, and both expect a template-building deployment before you see a result — a poor fit when you
+            want to know whether the output is right. <span class="tag tag-hyp">Hypothesis</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== pricing ===================== -->
+  <section class="sec" id="pricing">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Pricing</p>
+        <h2>Priced against one clerk's salary, not against software.</h2>
+        <p class="sub">Start free, prove the output on your own orders, then pay per month for the inbox to stop
+        being a queue.</p>
+      </div>
+      <div class="grid g3">
+        <div class="price">
+          <div class="tier">Free pilot</div>
+          <div class="amt">$0</div>
+          <div class="per">500 documents · one report · no commitment</div>
+          <ul>
+            <li><span class="t">✓</span> Your last 500 order documents parsed</li>
+            <li><span class="t">✓</span> Accuracy report with per-line results</li>
+            <li><span class="t">✓</span> The structured orders themselves, yours to keep</li>
+            <li><span class="t">✓</span> Low-confidence review by a human, not a black box</li>
+            <li><span class="t">✓</span> No integration, no card, no contract</li>
+          </ul>
+          <div class="foot"><a class="btn btn-primary" href="#pilot" style="width:100%;justify-content:center">Start the free pilot →</a></div>
+        </div>
+
+        <div class="price feature">
+          <div class="tier">Production</div>
+          <div class="amt">$1,500–4,000<span style="font-size:.42em">/mo</span></div>
+          <div class="per">up to 2,000 orders, then $0.35–$0.75 per order</div>
+          <ul>
+            <li><span class="t">✓</span> We run your order inbox continuously</li>
+            <li><span class="t">✓</span> ERP-ready output mapped to your import template</li>
+            <li><span class="t">✓</span> Daily reconciliation report</li>
+            <li><span class="t">✓</span> Human QC queue on every low-confidence line</li>
+            <li><span class="t">✓</span> Named contact and a monthly accuracy re-run</li>
+          </ul>
+          <div class="foot"><a class="btn btn-primary" href="#pilot" style="width:100%;justify-content:center">Prove it with the pilot first →</a></div>
+        </div>
+
+        <div class="price">
+          <div class="tier">Embedded <span class="tag tag-hyp">Roadmap</span></div>
+          <div class="amt">Talk to us</div>
+          <div class="per">the same engine, inside your ERP — per order or per seat</div>
+          <ul>
+            <li><span class="t">✓</span> Deeper ERP integration than the import file</li>
+            <li><span class="t">✓</span> Per-seat or per-order billing</li>
+            <li><span class="t">✓</span> Built once the mapping library and benchmarks are proven</li>
+            <li><span class="t">✓</span> Not sold yet — the pilot is how you get in line</li>
+          </ul>
+          <div class="foot"><a class="btn btn-quiet" href="#pilot" style="width:100%;justify-content:center">Run the free pilot →</a></div>
+        </div>
+      </div>
+      <p class="note">Ranges reflect the published offer ladder, not a menu of features: production is one price band covering up to 2,000 orders, then a per-order rate. Every plan begins with the same free pilot on your own documents.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Questions</p>
+        <h2>The things an operations manager asks first.</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>What exactly counts as an "order document"?</summary>
+          <div class="ans"><p>Anything a buyer sends you that contains an order: an email body typed freehand, a PDF
+          purchase order, an Excel or CSV attachment, a scanned fax or photo of a handwritten PO, and voicemail
+          recordings or transcripts. If your team currently reads it and types it, it is in scope. Some formats
+          we cannot handle are listed back to you rather than dropped.</p></div>
+        </details>
+        <details>
+          <summary>Which ERPs do you support?</summary>
+          <div class="ans"><p>The output is a structured file — canonical order JSON plus a CSV/Excel file whose
+          columns are matched to your ERP's import template. In practice that covers mid-market systems such as
+          QuickBooks, Sage 100/300, Epicor, Odoo, Acumatica, NetSuite, SAP Business One and Infor. Tell us your
+          ERP in the pilot request and we map to its import format before we deliver. <span class="tag tag-hyp">Hypothesis</span></p></div>
+        </details>
+        <details>
+          <summary>Do you integrate directly with my ERP?</summary>
+          <div class="ans"><p>Not during the pilot — the pilot produces files, which keeps it zero-risk and
+          reversible. Production starts with your ERP's own import format. Deeper API-level integration is the
+          later embedded tier, and we only build it once the mapping library is proven on real orders.</p></div>
+        </details>
+        <details>
+          <summary>Where does my data go, and is it safe?</summary>
+          <div class="ans"><p>Your documents stay on one encrypted machine and are not uploaded to any
+          third-party AI, OCR, cloud drive or email service — the engine runs locally. Raw documents are
+          deleted within 30 days of the pilot report being accepted; parsed orders and reports are kept 12
+          months for your dispute window. We hash your inbox before touching it so nothing is lost or altered.
+          The full policy is written down in <code>ops/DATA-HANDLING.md</code>. <span class="tag tag-src">ops/DATA-HANDLING.md</span></p></div>
+        </details>
+        <details>
+          <summary>What happens when the engine is unsure?</summary>
+          <div class="ans"><p>Every order carries a confidence score. Lines below your threshold (0.85 by default)
+          are held and reviewed by a person against the source document before they are released. Lines that
+          genuinely cannot be resolved are marked for your clarification — we flag them, we never guess. The
+          low-confidence queue is part of what you receive, not hidden from you.</p></div>
+        </details>
+        <details>
+          <summary>How long does the pilot take?</summary>
+          <div class="ans"><p>Once the 500 documents are in our hands, we aim to return the accuracy report and the
+          structured orders within a small number of business days. We confirm the exact turnaround when we
+          agree the scope, and we tell you if a format in your set needs a closer look. <span class="tag tag-hyp">Hypothesis</span></p></div>
+        </details>
+        <details>
+          <summary>Do I have to change my ERP, or lose staff?</summary>
+          <div class="ans"><p>Neither. Your ERP stays exactly as it is — we produce the files it already imports.
+          Your order-entry team stops typing and starts handling exceptions, which is the part that actually
+          needs a person. The goal is fewer people on data entry, not fewer people.</p></div>
+        </details>
+        <details>
+          <summary>What does it cost after the pilot?</summary>
+          <div class="ans"><p>Nothing until you choose to go to production. Production is $1,500–$4,000 per month
+          covering up to 2,000 orders, then $0.35–$0.75 per order beyond that. You only move to it if the pilot
+          proved the output posts into your ERP correctly.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== pilot intake form ===================== -->
+  <section class="sec" id="pilot">
+    <div class="wrap">
+      <div class="pilot-wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="kicker">Start here</p>
+          <h2>Book the free pilot.</h2>
+          <p class="sub">Tell us where your orders come in and what ERP you run. We will come back with a scope
+          for the 500-document pilot — an accuracy report and the structured orders, with no integration and no
+          commitment.</p>
+        </div>
+
+        <form class="form" id="pilot-form" novalidate>
+          <div class="field">
+            <label for="company">Company name</label>
+            <input id="company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <span class="hint">We reply from a monitored inbox; no drip sequence.</span>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="hint">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="erp">Which ERP do you run?</label>
+            <select id="erp" name="erp" required>
+              <option value="">Choose one</option>
+              <option>QuickBooks</option>
+              <option>Sage 100</option>
+              <option>Sage 300</option>
+              <option>Epicor</option>
+              <option>Odoo</option>
+              <option>Acumatica</option>
+              <option>NetSuite</option>
+              <option>SAP Business One</option>
+              <option>Infor</option>
+              <option>Other / not sure</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="volume">Orders per month</label>
+            <select id="volume" name="volume" required>
+              <option value="">Choose one</option>
+              <option>Under 500</option>
+              <option>500 – 1,000</option>
+              <option>1,000 – 2,000</option>
+              <option>2,000 – 5,000</option>
+              <option>Over 5,000</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="vertical">Vertical</label>
+            <select id="vertical" name="vertical">
+              <option value="">Choose one</option>
+              <option>Food &amp; beverage distribution</option>
+              <option>Building products</option>
+              <option>Electrical supply</option>
+              <option>Industrial supply</option>
+              <option>Other wholesale / distribution</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="staff">People doing order entry today</label>
+            <select id="staff" name="staff">
+              <option value="">Choose one</option>
+              <option>1 – 2</option>
+              <option>3 – 5</option>
+              <option>6 – 10</option>
+              <option>More than 10</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label>How do orders arrive today?</label>
+            <div class="checks">
+              <label><input type="checkbox" name="arrive" value="Email body"> Email body</label>
+              <label><input type="checkbox" name="arrive" value="PDF attachment"> PDF attachment</label>
+              <label><input type="checkbox" name="arrive" value="Excel or CSV"> Excel / CSV</label>
+              <label><input type="checkbox" name="arrive" value="Scanned fax or photo"> Scanned fax / photo</label>
+              <label><input type="checkbox" name="arrive" value="Voicemail"> Voicemail</label>
+              <label><input type="checkbox" name="arrive" value="EDI"> EDI (some)</label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="notes">Anything we should know?</label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+            <span class="hint">Volume quirks, ERP import templates, or the formats that cause the most trouble.</span>
+          </div>
+
+          <div class="field full">
+            <div class="checks">
+              <label><input type="checkbox" id="canShare" name="can_share" value="yes"> <span>I can provide up to 500 historical order documents for the pilot.</span></label>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn btn-primary btn-lg" type="submit">Request my free pilot →</button>
+            <span class="status" id="form-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+        <p class="note" style="margin-top:22px">Sending this does not commit you to anything and creates no
+        account. It opens a pre-filled message from your own mail client so nothing is transmitted without your
+        say-so.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== methodology ===================== -->
+  <section class="sec" id="method">
+    <div class="wrap">
+      <div class="method">
+        <h3>How we source numbers — and what is not a number yet</h3>
+        <ul>
+          <li><strong>Marketing and baseline figures</strong> (40–70% of POs arriving as documents; 6–12 minutes
+          per order; a 3–8% manual error rate; $21.50–$28/hr for a clerk) are tagged
+          <span class="tag tag-hyp">Hypothesis</span>. They are working estimates drawn from published
+          order-entry job postings and industry studies; the fully sourced version, one URL per figure, lives in
+          <code>market/MARKET.md</code>.</li>
+          <li><strong>Accuracy figures are never estimated.</strong> The engine's accuracy comes only from a run
+          over a gold set of documents (<code>delivery/gold/</code>) via
+          <code>python3 -m delivery.cli --accuracy delivery/gold</code>. Until that run exists for your data, the
+          figure on this site stays blank and is tagged <span class="tag tag-measured">Measured</span> only after
+          it prints.</li>
+          <li><strong>Service terms</strong> (the 500-document pilot scope, the 0.85 confidence threshold,
+          30-day raw-document deletion, 12-month retention, local-only processing) are sourced from our own
+          operations files: <span class="tag tag-src">ops/DATA-HANDLING.md</span>
+          <span class="tag tag-src">ops/PILOT-CHECKLIST.md</span>.</li>
+          <li><strong>Competitor statements</strong> about Conexiom and Esker (quote-only pricing, deployment
+          before results) are observations from their public sites as of publication and are tagged
+          <span class="tag tag-hyp">Hypothesis</span>.</li>
+          <li><strong>Pricing</strong> ($1,500–$4,000/mo for up to 2,000 orders, then $0.35–$0.75/order) is the
+          published offer ladder, not a benchmark against a competitor's rate card.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== footer ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand" style="margin-bottom:16px"><span class="mark" aria-hidden="true"></span>Order&nbsp;Intake</div>
+        <p>Done-for-you order intake for mid-market distributors and wholesalers. Messy purchase orders in,
+        clean ERP-ready sales orders out — measured, not promised.</p>
+        <div style="margin-top:22px"><a class="btn btn-primary" href="#pilot">Run my free pilot →</a></div>
+      </div>
+      <div>
+        <h4>On this page</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#accuracy">Accuracy</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#method">How we source numbers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:dawatmg976@gmail.com?subject=Free%20pilot%20—%20order%20intake">dawatmg976@gmail.com</a></li>
+          <li><a href="#pilot">Request the free pilot</a></li>
+          <li><span style="color:#8a8a8a;font-size:14px">No account required to start</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="yr">2026</span> Order Intake. Figures tagged Hypothesis are working estimates; accuracy figures are measured only.</span>
+      <span>Built as a static site. No trackers, no cookies, no fonts downloaded.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
